@@ -79,6 +79,7 @@ dns-porkbun
 dns-easydns
 dns-domainoffensive
 dns-websupport
+dns-wedos
 ```
 </details>
 
@@ -165,6 +166,8 @@ plesk_password: ''
 plesk_api_url: ''
 simply_account_name: ''
 simply_api_key: ''
+wedos_user: ''
+wedos_auth: ''
 ```
 </details>
 
@@ -1105,6 +1108,33 @@ The API key assigned to your mijn.host account can be found in your mijn.host Co
 
 </details>
 
+<details>
+
+  <summary>WEDOS DNS challenge</summary>
+
+https://client.wedos.com/client/wapi.html
+
+You need to:
+1. Accept the WAPI EULA
+2. Enable WAPI
+3. Insert IPv4/6 of your HA instance to enabled IPs
+4. Set WAPI password
+
+  ```yaml
+  email: your.email@example.com
+  domains:
+    - your.domain.tld
+  certfile: fullchain.pem
+  keyfile: privkey.pem
+  challenge: dns
+  dns:
+    provider: dns-wedos
+    wedos_user: <wedos_login_email>
+    wedos_auth: <wapi_password>
+  ```
+
+More information can be found on Certbot WEDOS DNS plugin GitHub page: https://github.com/clazzor/certbot-dns-wedos
+</details>
 
 ## Certificate files
 
@@ -1154,6 +1184,7 @@ dns-porkbun
 dns-easydns
 dns-domainoffensive
 dns-websupport
+dns-wedos
 ```
 
 ## Support

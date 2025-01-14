@@ -110,7 +110,7 @@ schema:
       dns-mijn-host|dns-njalla|dns-nsone|dns-porkbun|dns-ovh|dns-rfc2136|dns-route53|\
       dns-sakuracloud|dns-namecheap|dns-netcup|dns-simply|dns-gandi|dns-transip|dns-inwx|\
       dns-dreamhost|dns-he|dns-easydns|dns-domainoffensive|dns-websupport|dns-noris|\
-      dns-plesk)?"
+      dns-plesk|dns-wedos)?"
     rfc2136_algorithm: str?
     rfc2136_name: str?
     rfc2136_port: str?
@@ -134,4 +134,6 @@ schema:
     domainoffensive_token: str?
     websupport_identifier: str?
     websupport_secret_key: str?
+    wedos_user: str?
+    wedos_auth: str?
 startup: once

@@ -273,6 +273,16 @@ elif [ "${CHALLENGE}" == "dns" ] && [ "${DNS_PROVIDER}" == "dns-noris" ]; then
     bashio::config.require 'dns.noris_token'
     PROVIDER_ARGUMENTS+=("--authenticator" "${DNS_PROVIDER}" "--${DNS_PROVIDER}-credentials" "/data/dnsapikey" "--${DNS_PROVIDER}-propagation-seconds" "${PROPAGATION_SECONDS}")
 
+# WEDOS
+elif [ "${CHALLENGE}" == "dns" ] && [ "${DNS_PROVIDER}" == "dns-wedos" ]; then
+    bashio::config.require 'dns.wedos_user'
+    bashio::config.require 'dns.wedos_auth'
+    if (( PROPAGATION_SECONDS < 420 )); then
+        bashio::log.info "Increasing DNS propagation limit for WEDOS to at least 420 seconds."
+        PROPAGATION_SECONDS=420
+    fi
+    PROVIDER_ARGUMENTS+=("--authenticator" "${DNS_PROVIDER}" "--${DNS_PROVIDER}-credentials" "/data/dnsapikey" "--${DNS_PROVIDER}-propagation-seconds" "${PROPAGATION_SECONDS}")
+
 #All others
 else
     PROVIDER_ARGUMENTS+=("--${DNS_PROVIDER}" "--${DNS_PROVIDER}-credentials" "/data/dnsapikey")
